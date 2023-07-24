@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div id="content"></div><!--end of div content-->
 
     <script>
         fetch("https://ci-swapi.herokuapp.com/api/")
-            .then(response => response.json())
+            .then(response => response.text()) // or can replace .text with .jason
             .then(data => {
-                document.getElementById("content").innerText = data.people;
+                document.getElementById("content").innerText = data;
             })
+            .catch((e) => {
+                console.error("Error: ", e);
+            })
+            // console.error is used for more serious information, like errors and warnings.
     </script>
 </body>
+
 </html>
